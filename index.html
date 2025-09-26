@@ -3,173 +3,219 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Göktuğ Kaya - Cyber Security Specialist</title>
+  <title>Göktuğ Kaya - Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', 'Segoe UI Emoji', 'Noto Color Emoji', 'Apple Color Emoji', sans-serif;
-      background: linear-gradient(135deg, #0a0f1f, #1c1f2b, #0d1117);
-      color: #e8e8e8;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      font-family: 'Inter', sans-serif;
+      background: #0f2027;
+      color: #fff;
+      scroll-behavior: smooth;
     }
 
-    /* Header */
-    .header {
+    /* === Hero === */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72);
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
       text-align: center;
-      padding: 40px 20px 20px;
+      padding: 0 20px;
     }
-    .header img {
-      width: 120px;
-      height: 120px;
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .hero img {
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
-      border: 2px solid rgba(0,255,120,0.7);
-      box-shadow: 0 4px 20px rgba(0,255,120,0.3);
-      margin-bottom: 15px;
+      border: 3px solid rgba(255,255,255,0.7);
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+      margin-bottom: 20px;
       object-fit: cover;
     }
-    .header h1 {
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: #00ff99;
-      margin: 5px 0;
-    }
-    .header p {
-      font-size: 1rem;
-      color: #bbb;
-      margin: 0;
-    }
-
-    /* Content Grid */
-    .content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      padding: 30px 40px 50px;
-      max-width: 900px;
-      width: 100%;
-    }
-
-    /* Card */
-    .card {
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      padding: 22px;
-      border: 1px solid rgba(0,255,153,0.2);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0,255,153,0.4);
-      border-color: rgba(0,255,153,0.4);
-    }
-    .card h2 {
+    .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+    .hero p { font-size: 1.2rem; color: #ddd; }
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
       font-size: 1.2rem;
-      font-weight: 600;
-      color: #00ffcc;
-      margin-bottom: 12px;
-      border-bottom: 1px solid rgba(0,255,153,0.25);
-      padding-bottom: 6px;
+      color: #fff;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
-    /* Links */
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    /* === Section Genel === */
+    section {
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
-    .links a {
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* === About === */
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+    }
+    .about img {
+      width: 220px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    .about p {
+      flex: 1;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* === Social Media === */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .social-links a {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      text-decoration: none;
-      color: #e0e0e0;
-      padding: 10px 12px;
-      border-radius: 8px;
-      background: rgba(20, 25, 35, 0.6);
-      border: 1px solid rgba(0,255,153,0.15);
-      transition: all 0.3s;
-      font-size: 0.95rem;
-    }
-    .links a i {
-      margin-right: 10px;
-      color: #00ff99;
-      font-size: 1rem;
-    }
-    .links a img.icon {
-      width: 18px;
-      height: 18px;
-      margin-right: 10px;
-      object-fit: contain;
-      filter: brightness(0) saturate(100%) invert(72%) sepia(91%) saturate(600%) hue-rotate(85deg);
-    }
-    .links a:hover {
-      background: rgba(0,255,153,0.25);
+      justify-content: center;
+      font-size: 1.4rem;
       color: #fff;
-      transform: translateX(5px);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.3s ease;
+    }
+    .social-links a:hover { transform: scale(1.2); }
+
+    /* Renkli hoverlar */
+    .social-links a.twitter:hover { background: #1da1f2; }
+    .social-links a.instagram:hover { background: #e4405f; }
+    .social-links a.github:hover { background: #333; }
+    .social-links a.linkedin:hover { background: #0077b5; }
+
+    /* === Cyber Security === */
+    .cyber {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .cyber a img {
+      width: 120px;
+      height: auto;
+      filter: brightness(0) invert(1);
+      transition: transform 0.3s ease;
+    }
+    .cyber a img:hover { transform: scale(1.15); }
+
+    /* === Certificates === */
+    .certs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .certs div {
+      background: rgba(255,255,255,0.1);
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .certs div:hover {
+      background: rgba(0,255,153,0.3);
+      transform: translateY(-5px);
     }
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      .header h1 { font-size: 1.5rem; }
-      .header img { width: 90px; height: 90px; }
-      .content { padding: 20px; gap: 15px; }
+    /* === Footer === */
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      color: #ccc;
+      border-top: 1px solid rgba(255,255,255,0.2);
     }
   </style>
 </head>
 <body>
-  <div class="header">
+  <!-- Hero -->
+  <div class="hero">
     <img src="https://pbs.twimg.com/profile_images/1970238929770086400/crRRfTH5_400x400.jpg" alt="Profil Resmi">
     <h1>Göktuğ Kaya</h1>
     <p>Hacker & Cyber Security Specialist | Forza Bursaspor!</p>
+    <div class="scroll-down">⬇️ Scroll</div>
   </div>
 
-  <div class="content">
-    <div class="card">
-      <h2>🧑‍💻 About Me</h2>
-      <p><strong>Self taught Hacker & Bug Bounty Hunter from 🇹🇷</strong></p>
+  <!-- About -->
+  <section>
+    <h2>🧑‍💻 About Me</h2>
+    <div class="about">
+      <img src="https://pbs.twimg.com/profile_images/1970238929770086400/crRRfTH5_400x400.jpg" alt="Göktuğ Kaya">
+      <p><strong>Self taught Hacker & Bug Bounty Hunter from 🇹🇷</strong><br><br> 
+      </p>
     </div>
+  </section>
 
-    <div class="card">
-      <h2>🌐 Social Media</h2>
-      <div class="links">
-        <a href="https://twitter.com/g0ktugkaya" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
-        <a href="https://instagram.com/goktugkaya16" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-        <a href="https://github.com/g0ktugkaya" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://linkedin.com/in/g0ktugkaya" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      </div>
+  <!-- Social Media -->
+  <section>
+    <h2>🌐 Social Media</h2>
+    <div class="social-links">
+      <a href="https://twitter.com/g0ktugkaya" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
+      <a href="https://instagram.com/goktugkaya16" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/g0ktugkaya" target="_blank" class="github"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/g0ktugkaya" target="_blank" class="linkedin"><i class="fab fa-linkedin"></i></a>
     </div>
+  </section>
 
-    <div class="card">
-      <h2>🐞 Cyber Security</h2>
-      <div class="links">
-        <a href="https://hackerone.com/g0ktug" target="_blank">
-          <img src="https://www.svgrepo.com/show/353850/hacker-one.svg" class="icon"> HackerOne
-        </a>
-        <a href="https://app.intigriti.com/researcher/profile/g0ktug" target="_blank">
-          <img src="https://www.svgrepo.com/show/330708/intigriti.svg" class="icon"> Intigriti
-        </a>
-        <a href="https://bugcrowd.com/h/g0ktug" target="_blank">
-          <img src="https://images.icon-icons.com/3911/PNG/512/bugcrowd_logo_icon_247420.png" class="icon"> Bugcrowd
-        </a>
-      </div>
+  <!-- Cyber Security -->
+  <section>
+    <h2>🐞 Cyber Security</h2>
+    <div class="cyber">
+      <a href="https://hackerone.com/g0ktug" target="_blank"><img src="https://www.svgrepo.com/show/353850/hacker-one.svg" alt="HackerOne"></a>
+      <a href="https://app.intigriti.com/researcher/profile/g0ktug" target="_blank"><img src="https://www.svgrepo.com/show/330708/intigriti.svg" alt="Intigriti"></a>
+      <a href="https://bugcrowd.com/h/g0ktug" target="_blank"><img src="https://images.icon-icons.com/3911/PNG/512/bugcrowd_logo_icon_247420.png" alt="Bugcrowd"></a>
     </div>
+  </section>
 
-    <div class="card">
-      <h2>📜 Certificates</h2>
-      <ul style="padding-left:18px; margin:0; line-height:1.6;">
-        <li>eCPPTv2</li>
-        <li>OSCP</li>
-        <li>OSCP+</li>
-        <li>TSE Certified Penetration Test Expert</li>
-      </ul>
+  <!-- Certificates -->
+  <section>
+    <h2>📜 Certificates</h2>
+    <div class="certs">
+      <div>eCPPTv2</div>
+      <div>OSCP</div>
+      <div>OSCP+</div>
+      <div>TSE Certified Penetration Test Expert</div>
     </div>
-  </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    Made with ❤️ by Göktuğ Kaya
+  </footer>
 </body>
 </html>
