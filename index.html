@@ -8,53 +8,48 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #0f2027;
-      color: #fff;
-      scroll-behavior: smooth;
-    }
+    body { font-family: 'Inter', sans-serif; background: #0f2027; color: #fff; scroll-behavior: smooth; }
 
     /* === Hero === */
     .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
       background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72);
-      background-size: 400% 400%;
-      animation: gradientMove 15s ease infinite;
-      text-align: center;
-      padding: 0 20px;
-      position: relative;
+      background-size: 400% 400%; animation: gradientMove 15s ease infinite;
+      padding: 0 20px; position: relative;
     }
     @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% { background-position: 0% 50% }
+      50% { background-position: 100% 50% }
+      100% { background-position: 0% 50% }
     }
     .hero img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
+      width: 150px; height: 150px; border-radius: 50%;
       border: 3px solid rgba(255,255,255,0.7);
       box-shadow: 0 0 25px rgba(0,0,0,0.6);
-      margin-bottom: 20px;
-      object-fit: cover;
+      margin-bottom: 20px; object-fit: cover;
     }
     .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
     .hero p { font-size: 1.2rem; color: #ddd; }
-    .scroll-down {
-      position: absolute;
-      bottom: 20px;
-      font-size: 1.2rem;
-      color: #fff;
-      animation: bounce 2s infinite;
+
+    .scroll-down { position: absolute; bottom: 20px; font-size: 1.2rem; color: #fff; animation: bounce 2s infinite; }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+    /* === Online Badge (Hero içi) === */
+    .status-badge {
+      display: inline-flex; align-items: center;
+      background: rgba(0, 255, 153, 0.15);
+      border: 1px solid rgba(0, 255, 153, 0.4);
+      color: #00ff99;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin-top: 12px;
     }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    .status-badge .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #00ff99; margin-right: 8px;
+      box-shadow: 0 0 6px #00ff99;
     }
 
     /* === Section Genel === */
@@ -100,21 +95,13 @@
       margin-top: 20px;
     }
     .social-links a {
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      color: #fff;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
+      width: 55px; height: 55px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: #fff;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
       transition: all 0.3s ease;
     }
     .social-links a:hover { transform: scale(1.2); }
-
-    /* Renkli hoverlar */
     .social-links a.twitter:hover { background: #1da1f2; }
     .social-links a.instagram:hover { background: #e4405f; }
     .social-links a.github:hover { background: #333; }
@@ -122,15 +109,11 @@
 
     /* === Cyber Security === */
     .cyber {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      margin-top: 30px;
+      display: flex; justify-content: center; gap: 40px;
+      flex-wrap: wrap; margin-top: 30px;
     }
     .cyber a img {
-      width: 80px; /* küçültüldü */
-      height: auto;
+      width: 80px; height: auto;
       filter: brightness(0) invert(1);
       transition: transform 0.3s ease;
     }
@@ -140,14 +123,11 @@
     .certs {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
+      gap: 15px; margin-top: 20px;
     }
     .certs div {
       background: rgba(255,255,255,0.1);
-      padding: 15px;
-      border-radius: 12px;
-      text-align: center;
+      padding: 15px; border-radius: 12px; text-align: center;
       transition: all 0.3s ease;
     }
     .certs div:hover {
@@ -157,11 +137,8 @@
 
     /* === Footer === */
     footer {
-      text-align: center;
-      padding: 30px;
-      font-size: 0.9rem;
-      color: #ccc;
-      border-top: 1px solid rgba(255,255,255,0.2);
+      text-align: center; padding: 30px; font-size: 0.9rem;
+      color: #ccc; border-top: 1px solid rgba(255,255,255,0.2);
     }
   </style>
 </head>
@@ -171,6 +148,7 @@
     <img src="https://pbs.twimg.com/profile_images/1970238929770086400/crRRfTH5_400x400.jpg" alt="Profil Resmi">
     <h1>Göktuğ Kaya</h1>
     <p>Cyber Security Specialist | Bug Bounty Hunter | Developer</p>
+    <div class="status-badge"><span class="dot"></span> Online</div>
     <div class="scroll-down">⬇️ Scroll</div>
   </div>
 
@@ -223,12 +201,11 @@
   <script>
     const text = "Self taught Hacker & Bug Bounty Hunter from 🇹🇷";
     let index = 0;
-
     function typeWriter() {
       if (index < text.length) {
         document.getElementById("typing-text").innerHTML += text.charAt(index);
         index++;
-        setTimeout(typeWriter, 80); // yazma hızı
+        setTimeout(typeWriter, 80);
       }
     }
     window.onload = typeWriter;
