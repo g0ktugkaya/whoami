@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Göktuğ Kaya - Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -69,7 +69,7 @@
       text-align: center;
     }
 
-    /* === About (typing effect) === */
+    /* === About (terminal typing effect) === */
     .about {
       display: flex;
       justify-content: center;
@@ -78,7 +78,15 @@
     #typing-text {
       font-size: 1.2rem;
       line-height: 1.6;
-      border-right: 2px solid #00ffcc;
+      font-family: 'Source Code Pro', monospace;
+      color: #00ff99;
+      background: rgba(0, 0, 0, 0.85);
+      padding: 15px 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,255,153,0.4);
+      box-shadow: 0 0 10px rgba(0,255,153,0.4);
+      width: fit-content;
+      border-right: 2px solid #00ffcc; /* imleç */
       white-space: nowrap;
       overflow: hidden;
     }
@@ -121,7 +129,7 @@
       margin-top: 30px;
     }
     .cyber a img {
-      width: 65px;
+      width: 80px; /* küçültüldü */
       height: auto;
       filter: brightness(0) invert(1);
       transition: transform 0.3s ease;
