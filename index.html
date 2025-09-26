@@ -64,7 +64,7 @@
       text-align: center;
     }
 
-    /* === About (terminal typing effect) === */
+    /* === About (terminal typing effect responsive) === */
     .about {
       display: flex;
       justify-content: center;
@@ -80,10 +80,11 @@
       border-radius: 8px;
       border: 1px solid rgba(0,255,153,0.4);
       box-shadow: 0 0 10px rgba(0,255,153,0.4);
-      width: fit-content;
       border-right: 2px solid #00ffcc; /* imleç */
-      white-space: nowrap;
-      overflow: hidden;
+      white-space: pre-wrap;   /* satır kaymasına izin ver */
+      word-break: break-word;  /* uzun kelimeleri kır */
+      max-width: 95%;          /* mobilde kutu ekranı aşmasın */
+      margin: 0 auto;
     }
 
     /* === Social Media === */
