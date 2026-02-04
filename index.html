@@ -34,21 +34,52 @@
     .scroll-down { position: absolute; bottom: 20px; font-size: 1.2rem; color: #fff; animation: bounce 2s infinite; }
     @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
 
-    /* === Online Badge === */
+    /* === Status Badge (base) === */
     .status-badge {
       display: inline-flex; align-items: center;
-      background: rgba(0, 255, 153, 0.15);
-      border: 1px solid rgba(0, 255, 153, 0.4);
-      color: #00ff99;
       padding: 6px 12px;
       border-radius: 20px;
       font-size: 0.9rem;
       margin-top: 12px;
+      border: 1px solid;
+      user-select: none;
     }
     .status-badge .dot {
       width: 10px; height: 10px; border-radius: 50%;
-      background: #00ff99; margin-right: 8px;
+      margin-right: 8px;
+    }
+
+    /* Online */
+    .status-online {
+      background: rgba(0, 255, 153, 0.15);
+      border-color: rgba(0, 255, 153, 0.4);
+      color: #00ff99;
+    }
+    .status-online .dot {
+      background: #00ff99;
       box-shadow: 0 0 6px #00ff99;
+    }
+
+    /* AFK / Sleeping */
+    .status-afk {
+      background: rgba(255, 59, 48, 0.15);
+      border-color: rgba(255, 59, 48, 0.4);
+      color: #ff3b30;
+    }
+    .status-afk .dot {
+      background: #ff3b30;
+      box-shadow: 0 0 6px #ff3b30;
+    }
+
+    /* Weekend Mode */
+    .status-weekend {
+      background: rgba(52, 152, 219, 0.15);
+      border-color: rgba(52, 152, 219, 0.4);
+      color: #5dade2;
+    }
+    .status-weekend .dot {
+      background: #5dade2;
+      box-shadow: 0 0 6px #5dade2;
     }
 
     /* === Section Genel === */
@@ -91,7 +122,7 @@
       font-size: 1.4rem; color: #fff;
       background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
       transition: all 0.3s ease;
-      text-decoration: none; /* alt çizgi yok */
+      text-decoration: none;
     }
     .social-links a:hover { transform: scale(1.2); }
     .social-links a.twitter:hover { background: #1da1f2; }
@@ -139,7 +170,13 @@
     <img src="https://i.hizliresim.com/j00s72t.jpg" alt="Profil Resmi">
     <h1>Göktuğ Kaya</h1>
     <p>Hacker & Cyber Security Specialist | Forza Bursaspor!</p>
-    <div class="status-badge"><span class="dot"></span> Online</div>
+
+    <!-- Status Badge -->
+    <div class="status-badge status-online" id="statusBadge">
+      <span class="dot"></span>
+      <span id="statusText">Online</span>
+    </div>
+
     <div class="scroll-down">⬇️ Scroll</div>
   </div>
 
@@ -189,7 +226,7 @@
     Made with ❤️ by Göktuğ Kaya
   </footer>
 
-  <!-- Typing Effect Script -->
+  <!-- Typing Effect Script + Status Logic -->
   <script>
     const lines = [
       "┌─[goktug@kali]─[~]",
@@ -212,7 +249,7 @@
         } else {
           charIndex = 0;
           lineIndex++;
-          if (lineIndex < lines.length) {   // ekstra boş satır yok
+          if (lineIndex < lines.length) {
             currentLine = document.createElement("div");
             terminal.appendChild(currentLine);
           }
@@ -221,11 +258,54 @@
       } else {
         const cursor = document.createElement("span");
         cursor.className = "cursor";
-        currentLine.appendChild(cursor); // son satırın ucuna cursor
+        currentLine.appendChild(cursor);
       }
     }
 
-    window.onload = typeWriter;
+    function updateStatusBadge() {
+      const badge = document.getElementById("statusBadge");
+      const text = document.getElementById("statusText");
+
+      // Türkiye saati
+      const trNow = new Date(
+        new Date().toLocaleString("en-US", { timeZone: "Europe/Istanbul" })
+      );
+
+      const day = trNow.getDay();   // 0=Pazar, 1=Pzt, ... 6=Cmt
+      const hour = trNow.getHours();
+
+      const isWeekendMode =
+        (day === 6 && hour >= 9) ||        // Cumartesi 09:00+
+        (day === 0 && hour < 22) ||        // Pazar 00:00-21:59
+        (day === 0 && hour >= 0 && hour < 22); // netleştirme (aynı)
+
+      const isAfkSleeping =
+        (day >= 1 && day <= 5) && (hour >= 22 || hour < 9); // Hafta içi 22:00-09:00
+
+      // class reset
+      badge.classList.remove("status-online", "status-afk", "status-weekend");
+
+      if (isWeekendMode) {
+        badge.classList.add("status-weekend");
+        text.textContent = "Weekend Mode 🍺🏟️";
+      } else if (day === 0 && hour >= 22) {
+        // Pazar 22:00 sonrası -> hafta içi moduna geç (Online kabul)
+        badge.classList.add("status-online");
+        text.textContent = "Online";
+      } else if (isAfkSleeping) {
+        badge.classList.add("status-afk");
+        text.textContent = "AFK / Sleeping 😴";
+      } else {
+        badge.classList.add("status-online");
+        text.textContent = "Online";
+      }
+    }
+
+    window.onload = () => {
+      typeWriter();
+      updateStatusBadge();
+      setInterval(updateStatusBadge, 30000);
+    };
   </script>
 </body>
 </html>
